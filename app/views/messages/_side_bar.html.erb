@@ -1,6 +1,11 @@
 <div class="side-bar-header">
-  <a href="#" class="nickname">トム</a>
-  <a href="#" class="chat-start">チャットを作成する</a>
+  <div class="header-name">
+      <%= link_to current_user.name, edit_user_path(current_user)%> <%# パスにidが入っているときはidの情報が入っているインスタンスを引数として渡してあげることにより指定 %>
+    <%# link_to         テキスト              リンク先のパス %>
+  </div>
+  <div class="create-room">
+    <a href="#">チャットを作成する</a>
+  </div>
 </div>
 
 <div class="rooms">
