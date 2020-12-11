@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
   belongs_to :user
   belongs_to :room
-  validate  :content, presence: ture
+  validates  :content, presence: true
 end
