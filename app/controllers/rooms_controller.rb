@@ -5,7 +5,7 @@ def new
 end
 
 def create
-  @room = Room.new(room_params)
+  @room = Room.new(room_params)  #↓の値を引数として入力
   if @room.save
     redirect_to root_path
   else
@@ -17,7 +17,7 @@ end
 private
 
 def room_params
-  params.require(:room).permit(:name, user_ids: [])
+  params.require(:room).permit(:name, user_ids: []) #new.html.erbのroomの中のname:user_idsの中の[ ]を取得する。
 end
 
 
