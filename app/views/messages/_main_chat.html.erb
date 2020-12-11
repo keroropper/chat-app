@@ -1,7 +1,7 @@
 <div class="chat-header"> <%# チャット画面上部 %>
   <div class="left-header">
     <div class="header-title">
-      hoge
+      <%= @room.name%>
     </div>
   </div>
   <div class="right-header">
@@ -12,38 +12,8 @@
 </div>
 
 <div class="messages"><%# チャット表示画面 %>
-  <div class="message">
-    <div class="top-message">
-      <div class="message-user">
-      TOM
-      </div>
-      <div class="message-time">
-      2020/3/11 4:00
-      </div>
-    </div>
-    <div class="top-message">
-      <div class="message-content">
-      おはよう
-      </div>
-    </div>
-  </div>
-      <div class="message">
-    <div class="top-message">
-      <div class="message-user">
-      sim
-      </div>
-      <div class="message-time">
-      2020/3/12 4:00
-      </div>
-    </div>
-    <div class="top-message">
-      <div class="message-content">
-      ohayou
-      </div>
-    </div>
-  </div>
+  <%= render partial: 'message', collection: @messages %><%# messageという部分テンプレートを呼び出し。collectionで@messgesの情報を繰り返し表示 %>
 </div>
-
 
 <%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
 <%# @room=roomのid、@message=からのインスタンス   両方ともコントローラーで定義している。 %>

@@ -1,7 +1,12 @@
 class MessagesController < ApplicationController
   def index
     @room = Room.find(params[:room_id]) #roomのidを取得
-    @message = Message.new #からのインスタンス。→これから情報が入力されるから
+    @message =  Message.new #からのインスタンス。→これから情報が入力されるから
+    @messages = @room.messages.includes(:user)
+    #チャットルームに紐付いている全てのメッセージ（@room.messages）を@messagesと定義します。
+    #全てのメッセージ情報に紐づくユーザー情報を、includes(:user)と記述をすることにより、ユーザー情報を1度のアクセスでまとめて取得することができます。
+
+
   end
 
 
@@ -12,6 +17,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to room_messages_path(@room)
     else
+      @messages = @room.messages.includes(:user)
       render :index
     end
   end
