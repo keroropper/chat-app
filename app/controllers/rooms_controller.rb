@@ -11,6 +11,12 @@ def create
   else
     render :new
   end
+
+def index
+end
+
+
+
 end
 
 
